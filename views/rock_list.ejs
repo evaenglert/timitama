@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Catalog</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Animal Catalog</h1>
+  </header>
+
+  <main>
+    <section class="animal-cards">
+      <% animals.forEach(function(animal) { %>
+        <div class="animal-card">
+          <img src="<%= animal.image %>" alt="<%= animal.user_name %>">
+          <h2>
+            <%= animal.user_name %>
+          </h2>
+          <!-- <p>Age: <%= animal.age %> years</p> -->
+          <p>Species: <%= animal.gender %>
+          </p>
+        </div>
+        <% }); %>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Animal Catalog. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>

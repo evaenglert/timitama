@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Your Account</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to Your Account</h1>
+  </header>
+
+  <main>
+    <section class="user-info">
+      <h2>Hello, <%= username %>
+      </h2>
+      <p>Email: <%= email %>
+      </p>
+      <p>Account Type: <%= accountType %>
+      </p>
+    </section>
+
+    <section class="actions">
+      <h2>What would you like to do?</h2>
+      <ul>
+        <li><a href="#">View Profile</a></li>
+        <li><a href="#">Edit Account Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Your Account. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>

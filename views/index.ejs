@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+  <% if (user) {%>
+    <header>
+      <h1>Welcome to Your Account</h1>
+    </header>
+
+    <main>
+      <section class="user-info">
+        <h2>Hello, <%= user.username %>
+        </h2>
+
+      </section>
+
+      <section class="actions">
+        <h2>What would you like to do?</h2>
+        <ul>
+          <li><a href="#">View Profile</a></li>
+          <li><a href="#">Edit Account Settings</a></li>
+          <li><a href="/log-out">Logout</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Your Account. All rights reserved.</p>
+    </footer>
+
+    <% } else { %>
+      <h1>Please log in</h1>
+      <form action="/log-in" method="POST">
+        <label for="username">Username</label>
+        <input name="username" placeholder="username" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <button>Log In</button>
+      </form>
+      <h2> No account?</h2>
+      <p> <a href="/sign-up">Sign Up</a></p>
+      <%}%>
+</body>
+
+</html>
