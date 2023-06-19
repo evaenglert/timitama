@@ -13,6 +13,29 @@
     <input name="username" placeholder="username" type="text" />
     <label for="password">Password</label>
     <input name="password" type="password" />
+    <label>Type:</label>
+    <div>
+      <% species.forEach(function(kind) { %>
+        <div style="display: inline; padding-right:10px;">
+          <input class="radio-input" type="radio" name="kind" id="<%= kind._id %>" value="<%= kind._id %>"
+            checked="<%= kind.checked %>">
+          <label for="<%= kind._id %>">
+            <%= kind.name %>
+          </label>
+        </div>
+        <% }); %>
+      <label>Color:</label>
+      <div>
+        <% colors.forEach(function(color) { %>
+          <div style="display: inline; padding-right:10px;">
+            <input class="radio-input" type="radio" name="color" id="<%= color._id %>" value="<%= color._id %>"
+              checked="<%= color.checked %>">
+            <label for="<%= color._id %>">
+              <%= color.name %>
+            </label>
+          </div>
+          <% }); %>
+    </div>
     <button>Sign Up</button>
   </form>
 </body>
