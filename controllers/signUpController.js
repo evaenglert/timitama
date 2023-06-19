@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const Color = require('../models/color');
 const Species = require('../models/species');
+const FoodBowl = require('../models/foodbowl');
 
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
@@ -21,6 +22,7 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
     try {
       bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
         try {
+
           const user = new User({
             username: req.body.username,
             password: hashedPassword,
@@ -29,7 +31,21 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
             color: req.body.color,
 
           })
-          const result = await user.save();
+
+          const foodbowl = new FoodBowl({
+            user_id: user._id,
+            food_type: 'plankton',
+            food_quantity: 5,
+            drink_type: 'water',
+            drink_quantity: 5
+          })
+
+          user.save();
+          await foodbowl.save();
+
+
+
+
           res.redirect('/');
 
         }
