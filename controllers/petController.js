@@ -1,6 +1,8 @@
 const Pet = require("../models/user");
 const FoodBowl = require("../models/foodbowl");
 const asyncHandler = require("express-async-handler");
+const config = require("../config");
+
 
 exports.index = asyncHandler(async (req, res, next) => {
 
@@ -8,7 +10,9 @@ exports.index = asyncHandler(async (req, res, next) => {
 
   res.render('index', {
     user: req.user,
-    foodbowl: foodInfo});
+    foodbowl: foodInfo,
+    max_food: config.max_food,
+    max_drink: config.max_drink});
 })
 
 // Display list of all pets
@@ -22,7 +26,7 @@ exports.pet_list = asyncHandler(async (req, res, next) => {
   const allPets = await Pet.find({}, "username species color")
     .exec();
 
-  res.render('Pet_list', { animals: allPets });
+  res.render('pet_list', { animals: allPets });
 })
 
 // Display detail page for a specific Pet

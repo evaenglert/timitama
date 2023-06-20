@@ -13,6 +13,7 @@ var indexRouter = require('./routes/index');
 var signUpRouter = require('./routes/sign_up');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');
+var feederRouter = require('./routes/feed');
 
 var User = require('./models/user');
 
@@ -89,6 +90,7 @@ app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);
+app.use('/feed', feederRouter);
 app.post(
   "/log-in",
   passport.authenticate("local", {

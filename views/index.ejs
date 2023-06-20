@@ -32,6 +32,13 @@
       <h1> Age: <%= Math.floor((new Date() - user.created) / (1000*60*60*24)) %> days</h1>
       <h1> Food: <%= foodbowl.food_type %>, <%= foodbowl.food_quantity %> left </h1>
       <h1> Drink: <%= foodbowl.drink_type %>, <%= foodbowl.drink_quantity %> left </h1>
+      <form action="/feed/<%=foodbowl._id%>" method="POST">
+        <label for="food">Add Food</label>
+        <input name="food" type="number" min=0 max= <%= max_food - foodbowl.food_quantity %> />
+        <label for="drink">Add Drink</label>
+        <input name="drink" type="number" min=0 max= <%= max_drink - foodbowl.drink_quantity %> />
+        <button type='submit'> Feed </button>
+      </form>
 
       </section>
     </main>
