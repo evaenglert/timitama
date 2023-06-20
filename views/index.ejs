@@ -3,43 +3,44 @@
 
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Account Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
 <body>
   <% if (user) {%>
     <header>
       <h1>Welcome to Your Account</h1>
+      <nav>
+        <ul>
+          <li><a href="#">View Profile</a></li>
+          <li><a href="#">Edit Account Settings</a></li>
+          <li><a href="/log-out">Logout</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
       <section class="user-info">
         <h2>Hello, <%= user.username %>
         </h2>
-
       </section>
 
       <section class="actions">
         <h2>What would you like to do?</h2>
-        <ul>
-          <li><a href="#">View Profile</a></li>
-          <li><a href="#">Edit Account Settings</a></li>
-          <li><a href="/log-out">Logout</a></li>
-        </ul>
       </section>
 
       <section class="pet-info">
-      <h1> Age: <%= Math.floor((new Date() - user.created) / (1000*60*60*24)) %> days</h1>
-      <h1> Food: <%= foodbowl.food_type %>, <%= foodbowl.food_quantity %> left </h1>
-      <h1> Drink: <%= foodbowl.drink_type %>, <%= foodbowl.drink_quantity %> left </h1>
-      <form action="/feed/<%=foodbowl._id%>" method="POST">
-        <label for="food">Add Food</label>
-        <input name="food" type="number" min=0 max= <%= max_food - foodbowl.food_quantity %> />
-        <label for="drink">Add Drink</label>
-        <input name="drink" type="number" min=0 max= <%= max_drink - foodbowl.drink_quantity %> />
-        <button type='submit'> Feed </button>
-      </form>
-
+        <h1>Age: <%= Math.floor((new Date() - user.created) / (1000*60*60*24)) %> days</h1>
+        <h1>Food: <%= foodbowl.food_type %>, <%= foodbowl.food_quantity %> left</h1>
+        <h1>Drink: <%= foodbowl.drink_type %>, <%= foodbowl.drink_quantity %> left</h1>
+        <form action="/feed/<%=foodbowl._id%>" method="POST">
+          <label for="food">Add Food</label>
+          <input name="food" type="number" min="0" max="<%= max_food - foodbowl.food_quantity %>">
+          <label for="drink">Add Drink</label>
+          <input name="drink" type="number" min="0" max="<%= max_drink - foodbowl.drink_quantity %>">
+          <button type="submit">Feed</button>
+        </form>
       </section>
     </main>
 
@@ -51,13 +52,13 @@
       <h1>Please log in</h1>
       <form action="/log-in" method="POST">
         <label for="username">Username</label>
-        <input name="username" placeholder="username" type="text" />
+        <input name="username" placeholder="Username" type="text">
         <label for="password">Password</label>
-        <input name="password" type="password" />
+        <input name="password" type="password">
         <button>Log In</button>
       </form>
-      <h2> No account?</h2>
-      <p> <a href="/sign-up">Sign Up</a></p>
+      <h2>No account?</h2>
+      <p><a href="/sign-up">Sign Up</a></p>
       <%}%>
 </body>
 

@@ -3,20 +3,21 @@
 
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/stylesheets/signup.css">
 </head>
 
 <body>
   <h1>Sign Up</h1>
   <form action="" method="POST">
     <label for="username">Username</label>
-    <input name="username" placeholder="username" type="text" />
+    <input name="username" placeholder="Username" type="text">
     <label for="password">Password</label>
-    <input name="password" type="password" />
+    <input name="password" type="password">
     <label>Type:</label>
-    <div>
+    <div class="radio-group">
       <% species.forEach(function(kind) { %>
-        <div style="display: inline; padding-right:10px;">
+        <div class="radio-item">
           <input class="radio-input" type="radio" name="kind" id="<%= kind._id %>" value="<%= kind._id %>"
             checked="<%= kind.checked %>">
           <label for="<%= kind._id %>">
@@ -24,20 +25,23 @@
           </label>
         </div>
         <% }); %>
-      <label>Color:</label>
-      <div>
-        <% colors.forEach(function(color) { %>
-          <div style="display: inline; padding-right:10px;">
-            <input class="radio-input" type="radio" name="color" id="<%= color._id %>" value="<%= color._id %>"
-              checked="<%= color.checked %>">
-            <label for="<%= color._id %>">
-              <%= color.name %>
-            </label>
-          </div>
-          <% }); %>
+    </div>
+    <label>Color:</label>
+    <div class="radio-group">
+      <% colors.forEach(function(color) { %>
+        <div class="radio-item">
+          <input class="radio-input" type="radio" name="color" id="<%= color._id %>" value="<%= color._id %>"
+            checked="<%= color.checked %>">
+          <label for="<%= color._id %>">
+            <%= color.name %>
+          </label>
+        </div>
+        <% }); %>
     </div>
     <button>Sign Up</button>
   </form>
+
+  <p>Already have an account? <a href="/">Log In</a></p>
 </body>
 
 </html>
